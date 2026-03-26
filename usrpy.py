@@ -1,4 +1,4 @@
-#  [USER-PY 1.0]
+#  [USER-PY 1.1]
 #     
 #   El proyecto USER-PY se trata de un gestor de usuarios basado en python, se trata de un complemento
 #   al proyecto MAGICPASS-JS. Su funcionamiento es simple, introduces un usuario y la contraseña gener
@@ -22,7 +22,7 @@
 import os # Importamos la librería OS para poder utilizar los comandos de limpiar pantalla
 import time # Importamos la librería time para poder utilizar los delay/temporizadores
 
-# [---FUNCIONES DE LECTURA/ESCRITURA---]
+# [--- FUNCIONES DE REGISTRO/BORRADO DE ARCHIVOS ---]
 
 # Función de registro de nuevos archivos (Borra el archivo de texto y lo reinicia desde cero)
 
@@ -98,7 +98,7 @@ def usrpy_delete_file():
 
     if not os.path.exists("usrpy_data.txt"): #Si no se detecta el archivo, mostraremos un mensaje de error
 
-        print("ERROR, NO EXISTE BASE DE DATOS DE USUARIOS DISPONIBLE") # Mostramos un mensaje indicando que no hay base de datos de usuarios disponible
+        print("ERROR, NO EXISTE BASE DE DATOS DE USUARIOS DISPONIBLE") # Mostramos un mensaje de error indicando que no hay base de datos de usuarios disponible
 
         time.sleep(2) # Esperamos dos segundos
         os.system("cls" if os.name == "nt" else "clear") # Limpiamos pantalla con el comando que corresponda, según el OS
@@ -119,7 +119,70 @@ def usrpy_delete_file():
         time.sleep(2) # Esperamos dos segundos
         os.system("cls" if os.name == "nt" else "clear") # Limpiamos pantalla con el comando que corresponda, según el OS
 
-# Función de lectura de usuarios
+# [--------------------------------------------------]
+
+# [--- FUNCIONES DE BÚSQUEDA/MOSTRADO DE USUARIOS ---]
+
+# Función de búsqueda de usuarios
+
+def usrpy_search_user():
+
+    print("-----------") # Mostramos un mensaje indicando que introduzcamos el usuario a buscar en el buscador del sistema
+    print("USER-PY 1.0")
+    print("-----------")
+    print("")
+    usrpy_user = input("Introduzca usuario a buscar:")
+
+    time.sleep(2) # Esperamos dos segundos
+    os.system("cls" if os.name == "nt" else "clear") # Limpiamos pantalla con el comando que corresponda, según el OS
+
+    print("-----------") # Mostramos un mensaje indicando que estamos buscando el usuario en el sistema
+    print("USER-PY 1.0")
+    print("-----------")
+    print("")
+    print("Buscando usuario...")
+
+    time.sleep(2) # Esperamos dos segundos
+    os.system("cls" if os.name == "nt" else "clear") # Limpiamos pantalla con el comando que corresponda, según el OS
+
+    if not os.path.exists("usrpy_data.txt"): # Si no se detecta el archivo, mostraremos un mensaje de error
+
+            print("ERROR, NO EXISTE BASE DE DATOS DE USUARIOS DISPONIBLE") # Mostramos un mensaje de error indicando que no hay base de datos de usuarios disponible
+
+            time.sleep(2) # Esperamos dos segundos
+            os.system("cls" if os.name == "nt" else "clear") # Limpiamos pantalla con el comando que corresponda, según el OS
+
+            return # Ejecutamos función return, para evitar que Python genere excepcion y se bloquee
+    
+    usrpy_located = False # Variable auxiliar que utilizaremos para localizar el usuario y mostrar el mensaje correspondiente
+    
+    with open("usrpy_data.txt", "r") as usrpy_file: # Abrimos el archivo en modo "r" para leer los datos del archivo
+
+        for line in usrpy_file: # Ejecutamos un bucle for para poder leer linea por linea
+    
+            line = line.strip() # Eliminamos los saltos de línea
+
+            if usrpy_user in line: #Si encontramos el usuario en el archivo
+
+                print(line) # Imprimimos el usuario:contraseña en la pantalla
+                
+                usrpy_located = True # Cambiamos al estado True la variable "usrpy_located"
+
+                time.sleep(2) # Esperamos dos segundos
+                os.system("cls" if os.name == "nt" else "clear") # Limpiamos pantalla con el comando que corresponda, según el OS
+
+                break; # Finalizamos la ejecución de la búsqueda de usuarios, finalizando el bucle for
+        
+        if not usrpy_located: # Si no lo encontramos
+
+            print("ERROR, USUARIO NO LOCALIZADO") # Mostramos un mensaje de error indicando que no hemos localizado al usuario
+
+            time.sleep(2) # Esperamos dos segundos
+            os.system("cls" if os.name == "nt" else "clear") # Limpiamos pantalla con el comando que corresponda, según el OS
+
+            return # Ejecutamos función return, para evitar que Python genere excepcion y se bloquee
+            
+# Función de mostrar  usuarios totales
 
 def usrpy_show_user():
     
@@ -139,6 +202,8 @@ def usrpy_show_user():
             time.sleep(2) # Esperamos dos segundos
             os.system("cls" if os.name == "nt" else "clear") # Limpiamos pantalla con el comando que corresponda, según el OS
 
+            return # Ejecutamos función return, para evitar que Python genere excepcion y se bloquee
+
     with open("usrpy_data.txt", "r") as usrpy_file: # Abrimos el archivo en modo "r" para leer los datos del archivo
 
         for line in usrpy_file: # Ejecutamos un bucle for para poder leer linea por linea
@@ -149,7 +214,11 @@ def usrpy_show_user():
             time.sleep(2) # Esperamos dos segundos
             os.system("cls" if os.name == "nt" else "clear") # Limpiamos pantalla con el comando que corresponda, según el OS
 
-# Función de añadido de usuarios (Añade nuevos usuarios al archivo sin borrar los anteriores)
+# [-------------------------------------------------]
+
+# [--- FUNCIONES DE REGISTRO/BORRADO DE USUARIOS ---]
+
+# Función de registro de usuarios (Añade nuevos usuarios al archivo sin borrar los anteriores)
 
 def usrpy_add_user():
 
@@ -211,30 +280,94 @@ def usrpy_add_user():
     time.sleep(2) # Esperamos dos segundos
     os.system("cls" if os.name == "nt" else "clear") # Limpiamos pantalla con el comando que corresponda, según el OS
 
-# [------------------------------------]
+# Función de borrado de usuarios 
+
+def usrpy_delete_user():
+
+    print("-----------") # Mostramos un mensaje indicando que introduzcamos el usuario a borrar
+    print("USER-PY 1.0")
+    print("-----------")
+    print("")
+    usrpy_username = input("Introduzca usuario:") # Almacenamos el usuario a borrar en la variable "usrpy_username"
+
+    time.sleep(2) # Esperamos dos segundos
+    os.system("cls" if os.name == "nt" else "clear") # Limpiamos pantalla con el comando que corresponda, según el OS
+
+    print("-----------") # Mostramos un mensaje indicando que estamos borrando el usuario introducido
+    print("USER-PY 1.0")
+    print("-----------")
+    print("")
+    print("Borrando usuario...")
+
+    if not os.path.exists("usrpy_data.txt"): #Si no se detecta el archivo, mostraremos un mensaje de error
+
+        print("ERROR, NO EXISTE BASE DE DATOS DE USUARIOS DISPONIBLE") # Mostramos un mensaje indicando que no hay base de datos de usuarios disponible
+
+        time.sleep(2) # Esperamos dos segundos
+        os.system("cls" if os.name == "nt" else "clear") # Limpiamos pantalla con el comando que corresponda, según el OS
+
+        return # Ejecutamos función return, para evitar que Python genere excepcion y se bloquee
+
+    with open("usrpy_data.txt", "r") as usrpy_file: # Abrimos el archivo en modo "r" para leer los datos del archivo
+
+        lines = usrpy_file.readlines() # Almacenamos las líneas del archivo en la variable "lines":
+
+    with open("usrpy_data.txt", "w") as usrpy_file: # Abrimos el archivo en modo "write" para añadir datos sobreescribiendo los anteriores
+
+        for line in lines: # Ejecutamos un bucle for para poder leer linea por linea
+
+            if usrpy_username not in line: # Si el usuario introducido no está en la linea
+
+                usrpy_file.write(line) # Reescribimos el archivo, esquivando las líneas que tengan el usuario introducido
+
+    time.sleep(2) # Esperamos dos segundos
+    os.system("cls" if os.name == "nt" else "clear") # Limpiamos pantalla con el comando que corresponda, según el OS
+
+    print("-----------") # Mostramos un mensaje indicando que hemos borrado el usuario correctamente
+    print("USER-PY 1.0")
+    print("-----------")
+    print("")
+    print("Usuario borrado correctamente")
+
+    time.sleep(2) # Esperamos dos segundos
+    os.system("cls" if os.name == "nt" else "clear") # Limpiamos pantalla con el comando que corresponda, según el OS
+    
+# [-------------------------------------------------]
 
 # [-------FUNCIONES DEL SISTEMA--------]
 
 # Función de bienvenida del sistema
 
-def welcome_screen():
+def system_welcome_screen():
     
     print("----------------------") #Mostramos un mensaje indicando el mensaje de bienvenida del sistema
     print("USER-PY 1.0 BY XT LABS")
     print("----------------------")
     print("")
     print("Bienvenido a USER-PY, un proyecto de XT LABS")
+    print("Liberado bajo licencia MPL 2.0")
+
+# Función de versión del sistema
+
+def system_version_screen():
+
+    print("-----------") # Mostramos un mensaje indicando que versión del sistema tenemos instalada
+    print("USER-PY 1.0")
+    print("-----------")
+    print ("")
+    print ("Versión del sistema instalada -> v1.1") # Mostramos un mensaje indicando la versión específica del programa
+
+    time.sleep(2) # Esperamos dos segundos
+    os.system("cls" if os.name == "nt" else "clear") # Limpiamos pantalla con el comando que corresponda, según el OS
 
 # Función lectora de comandos
 
-def command_screen():
+def system_command_screen():
 
     print("-----------") # Mostramos un mensaje indicando que introduzcamos un comando
     print("USER-PY 1.0")
     print("-----------")
-
     print ("")
-
     usrpy_command = input ("Introduzca comando:") # Almacenamos el comando en la variable "usrpy_command"
 
     # Comando de nuevo registro de archivos
@@ -259,7 +392,18 @@ def command_screen():
 
         usrpy_delete_file() # Llamamos a la función "usrpy_delete_file"
 
-    # Comando de lectura de usuarios
+    # Comando de búsqueda de usuarios
+
+    elif usrpy_command == "usrpy/search_user":
+
+        print("Iniciando búsqueda de usuarios") # Mostramos un mensaje indicando que estamos iniciando la búsqueda de usuarios
+
+        time.sleep(2) # Esperamos dos segundos
+        os.system("cls" if os.name == "nt" else "clear") # Limpiamos pantalla con el comando que corresponda, según el OS
+
+        usrpy_search_user() #Llamamos a la función "usrpy_search_user"
+
+    # Comando de lectura de usuarios totales
 
     elif usrpy_command == "usrpy/show_user":
 
@@ -274,23 +418,56 @@ def command_screen():
     
     elif usrpy_command == "usrpy/add_user": 
 
-        print("Iniciando añadido de usuario") # Mostramos un mensaje indicando que estamos iniciando el añadido de un nuevo usuario
+        print("Iniciando añadido de usuarios") # Mostramos un mensaje indicando que estamos iniciando el añadido de un nuevo usuario
         
         time.sleep(2) # Esperamos dos segundos
         os.system("cls" if os.name == "nt" else "clear") # Limpiamos pantalla con el comando que corresponda, según el OS
 
         usrpy_add_user() # Llamamos a la función "usrpy_add_user"
 
+    # Comando de borrado de usuarios
+    
+    elif usrpy_command == "usrpy/delete_user": 
+
+        print("Iniciando borrado de usuarios") # Mostramos un mensaje indicando que estamos iniciando el borrado de usuarios
+        
+        time.sleep(2) # Esperamos dos segundos
+        os.system("cls" if os.name == "nt" else "clear") # Limpiamos pantalla con el comando que corresponda, según el OS
+
+        usrpy_delete_user() # Llamamos a la función "usrpy_add_user"
+
+    # Comando de ayuda del sistema
+
+    elif usrpy_command == "usrpy/system_help":
+
+        print("Mostrando ayuda del sistema") # Mostramos un mensaje indicandoque estamos mostrando la ayuda del sistema
+
+        time.sleep(2) # Esperamos dos segundos
+        os.system("cls" if os.name == "nt" else "clear") # Limpiamos pantalla con el comando que corresponda, según el OS
+
+        help_screen() # Llamamos a la función "help_screen"
+
+    # Comando de versión del sistema
+
+    elif usrpy_command == "usrpy/system_version":
+
+        print("Mostrando versión del sistema") # Mostramos un mensaje indicando que estamos mostrando la versión del sistema
+
+        time.sleep(2) # Esperamos dos segundos
+        os.system("cls" if os.name == "nt" else "clear") # Limpiamos pantalla con el comando que corresponda, según el OS
+
+        system_version_screen() # Llamamos a la función "version_screen"
+
     # Comando de limpieza de pantalla
 
-    elif usrpy_command == "usrpy/clear_data":
+    elif usrpy_command == "usrpy/system_clear":
 
         time.sleep(2) # Esperamos dos segundos
         os.system("cls" if os.name == "nt" else "clear") # Limpiamos pantalla con el comando que corresponda, según el OS
 
     # Comando de salida del programa
 
-    elif usrpy_command == "usrpy/exit_app" : 
+    elif usrpy_command == "usrpy/system_exit" : 
 
         time.sleep(2) # Esperamos dos segundos
         quit() # Salimos del intérprete de python
@@ -304,13 +481,57 @@ def command_screen():
         time.sleep(2) # Esperamos dos segundos
         os.system("cls" if os.name == "nt" else "clear") # Limpiamos pantalla con el comando que corresponda, según el OS
 
+# Función de ayuda del sistema
+
+def help_screen():
+
+    print("-----------") # Mostramos un mensaje mostrando los distintos comandos del sistema
+    print("USER-PY 1.0")
+    print("-----------")
+    print ("")
+
+    print("Comandos de control de archivos:") # Comandos de control de archivos
+
+    print("")
+
+    print("usrpy/new_file -> Crear nuevo archivo, sobreescribiendo el anterior")
+    print("usrpy/delete_file -> Borrar archivo")
+
+    print("")
+
+    print("Comandos de búsqueda y localización de usuarios:") # Comandos de búsqueda y localización de usuarios
+
+    print("")
+
+    print("usrpy/search_user -> Buscar usuario")
+    print("usrpy/show_user -> Mostrar los usuarios totales del sistema")
+
+    print("")
+
+    print("Comandos de control de usuarios:") # Comandos de control de usuarios
+
+    print("")
+
+    print("usrpy/add_user -> Añadir nuevo usuario")
+    print("usrpy/delete_user -> Borrar usuario")
+
+    print("")
+
+    print("Comandos del sistema:") # Comandos del sistema
+
+    print("usrpy/system_help -> Ayuda del sistema")
+    print("usrpy/system_clear -> Limpiar pantalla")
+    print("usrpy/system_exit -> Salir de la aplicación")
+
+    print("")
+
 # [------------------------------------]
 
-welcome_screen() # Llamamos a la función de bienvenida, que se ejecutará cada vez que iniciemos el programa
+system_welcome_screen() # Llamamos a la función de bienvenida, que se ejecutará cada vez que iniciemos el programa
 
 time.sleep(2) # Esperamos dos segundos
 os.system("cls" if os.name == "nt" else "clear") # Limpiamos pantalla con el comando que corresponda, según el OS
 
 while True:
 
-    command_screen() # Ejecutamos la función lectora de comandos del dispositivo
+    system_command_screen() # Ejecutamos la función lectora de comandos del dispositivo

@@ -485,10 +485,14 @@ def system_command_screen():
 
 def help_screen():
 
-    print("-----------") # Mostramos un mensaje mostrando los distintos comandos del sistema
+    print("-----------") # Mostramos un mensaje indicando que hemos iniciado la función de ayuda de USER-PY, y mostramos los comandos del sistema
     print("USER-PY 1.0")
     print("-----------")
     print ("")
+
+    print("USER-PY HELP v1.0")
+
+    print("")
 
     print("Comandos de control de archivos:") # Comandos de control de archivos
 
@@ -518,6 +522,8 @@ def help_screen():
     print("")
 
     print("Comandos del sistema:") # Comandos del sistema
+
+    print("")
 
     print("usrpy/system_help -> Ayuda del sistema")
     print("usrpy/system_clear -> Limpiar pantalla")

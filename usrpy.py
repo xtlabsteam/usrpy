@@ -14,7 +14,7 @@
 #   [DOCUMENTACIÓN DEL PROYECTO]
 #   
 #   Licencia: https://www.mozilla.org/en-US/MPL/2.0/
-#   Web XT LABS: https://xtlabsteam.infinityfreeapp.com/
+#   Web XT LABS: PRÓXIMAMENTE
 #
 
 # [LIBRERÍAS DEL SISTEMA]
@@ -525,8 +525,9 @@ def help_screen():
 
     print("")
 
-    print("usrpy/system_help -> Ayuda del sistema")
+    print("usrpy/system_help -> Ayuda del sistema") 
     print("usrpy/system_clear -> Limpiar pantalla")
+    print("usrpy/system_version -> Versión de la aplicación")
     print("usrpy/system_exit -> Salir de la aplicación")
 
     print("")

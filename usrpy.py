@@ -14,7 +14,7 @@
 #   [DOCUMENTACIÓN DEL PROYECTO]
 #   
 #   Licencia: https://www.mozilla.org/en-US/MPL/2.0/
-#   Web XT LABS: PRÓXIMAMENTE
+#   Web XT LABS: https://xtlabsteam.infinityfreeapp.com/
 #
 
 # [LIBRERÍAS DEL SISTEMA]

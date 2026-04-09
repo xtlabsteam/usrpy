@@ -360,6 +360,57 @@ def system_version_screen():
     time.sleep(2) # Esperamos dos segundos
     os.system("cls" if os.name == "nt" else "clear") # Limpiamos pantalla con el comando que corresponda, según el OS
 
+# Función de ayuda del sistema
+
+def system_help_screen():
+
+    print("-----------") # Mostramos un mensaje indicando que hemos iniciado la función de ayuda de USER-PY, y mostramos los comandos del sistema
+    print("USER-PY 1.0")
+    print("-----------")
+    print ("")
+
+    print("USER-PY HELP v1.0")
+
+    print("")
+
+    print("Comandos de control de archivos:") # Comandos de control de archivos
+
+    print("")
+
+    print("usrpy/new_file -> Crear nuevo archivo, sobreescribiendo el anterior")
+    print("usrpy/delete_file -> Borrar archivo")
+
+    print("")
+
+    print("Comandos de búsqueda y localización de usuarios:") # Comandos de búsqueda y localización de usuarios
+
+    print("")
+
+    print("usrpy/search_user -> Buscar usuario")
+    print("usrpy/show_user -> Mostrar los usuarios totales del sistema")
+
+    print("")
+
+    print("Comandos de control de usuarios:") # Comandos de control de usuarios
+
+    print("")
+
+    print("usrpy/add_user -> Añadir nuevo usuario")
+    print("usrpy/delete_user -> Borrar usuario")
+
+    print("")
+
+    print("Comandos del sistema:") # Comandos del sistema
+
+    print("")
+
+    print("usrpy/system_help -> Ayuda del sistema") 
+    print("usrpy/system_clear -> Limpiar pantalla")
+    print("usrpy/system_version -> Versión de la aplicación")
+    print("usrpy/system_exit -> Salir de la aplicación")
+
+    print("")
+
 # Función lectora de comandos
 
 def system_command_screen():
@@ -445,7 +496,7 @@ def system_command_screen():
         time.sleep(2) # Esperamos dos segundos
         os.system("cls" if os.name == "nt" else "clear") # Limpiamos pantalla con el comando que corresponda, según el OS
 
-        help_screen() # Llamamos a la función "help_screen"
+        system_help_screen() # Llamamos a la función "help_screen"
 
     # Comando de versión del sistema
 
@@ -480,57 +531,6 @@ def system_command_screen():
 
         time.sleep(2) # Esperamos dos segundos
         os.system("cls" if os.name == "nt" else "clear") # Limpiamos pantalla con el comando que corresponda, según el OS
-
-# Función de ayuda del sistema
-
-def help_screen():
-
-    print("-----------") # Mostramos un mensaje indicando que hemos iniciado la función de ayuda de USER-PY, y mostramos los comandos del sistema
-    print("USER-PY 1.0")
-    print("-----------")
-    print ("")
-
-    print("USER-PY HELP v1.0")
-
-    print("")
-
-    print("Comandos de control de archivos:") # Comandos de control de archivos
-
-    print("")
-
-    print("usrpy/new_file -> Crear nuevo archivo, sobreescribiendo el anterior")
-    print("usrpy/delete_file -> Borrar archivo")
-
-    print("")
-
-    print("Comandos de búsqueda y localización de usuarios:") # Comandos de búsqueda y localización de usuarios
-
-    print("")
-
-    print("usrpy/search_user -> Buscar usuario")
-    print("usrpy/show_user -> Mostrar los usuarios totales del sistema")
-
-    print("")
-
-    print("Comandos de control de usuarios:") # Comandos de control de usuarios
-
-    print("")
-
-    print("usrpy/add_user -> Añadir nuevo usuario")
-    print("usrpy/delete_user -> Borrar usuario")
-
-    print("")
-
-    print("Comandos del sistema:") # Comandos del sistema
-
-    print("")
-
-    print("usrpy/system_help -> Ayuda del sistema") 
-    print("usrpy/system_clear -> Limpiar pantalla")
-    print("usrpy/system_version -> Versión de la aplicación")
-    print("usrpy/system_exit -> Salir de la aplicación")
-
-    print("")
 
 # [------------------------------------]
 

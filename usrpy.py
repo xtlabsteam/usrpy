@@ -9,12 +9,13 @@
 #   Al igual que su complemento, es un proyecto completamente opensource abierto a cualquiera que quiera explorar
 #   o hacer su propia versión de este proyecto ;)
 #
-#   [XTLABS© 2026 - OPENSOURCE]
+#   [XTLABS© 2026 - OPEN SOURCE]
 #
 #   [DOCUMENTACIÓN DEL PROYECTO]
 #   
 #   Licencia: https://www.mozilla.org/en-US/MPL/2.0/
 #   Web XT LABS: https://xtlabsteam.infinityfreeapp.com/
+#   Guía de inicio rápido: https://drive.google.com/file/d/1TcnnDSbtIsVpEYlTSQHjuBOi-657Yh0Y/view?usp=sharing
 #
 
 # [LIBRERÍAS DEL SISTEMA]
